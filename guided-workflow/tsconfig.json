@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["*"]
+    },
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "disableSizeLimit": true,
+    "declaration": false,
+    "declarationMap": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "lib": ["dom", "esnext", "es6", "webworker"],
+    "module": "es2020",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noErrorTruncation": true,
+    "noUncheckedSideEffectImports": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "target": "es2020",
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+  },
+  "include": ["src", "vite.config.ts", "vitest.config.ts", "mocks/*"],
+  "exclude": ["**/node_modules/*", "build", "scripts", "**/cisco/*"]
+}
