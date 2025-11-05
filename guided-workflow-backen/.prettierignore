@@ -1,0 +1,5 @@
+amplify
+build
+nginx
+node_modules
+src/scss
