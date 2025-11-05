@@ -1,0 +1,9 @@
+# Find prefect calls
+id: prefect-flow-call
+language: python
+rule:
+  kind: argument_list
+  follows:
+    kind: attribute
+    regex: create_flow_run
+
