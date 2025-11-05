@@ -1,0 +1,30 @@
+from sqlalchemy import Column, Date, Float, Integer, String, table
+
+# No Primary Keys defined for this table
+V2SubAllocationReport = table(
+    "dc_sub_allocation_rpt",
+    Column("sold_as_service_name", String(5000), nullable=True),
+    Column("buying_program_name", String(5000), nullable=True),
+    Column("pricing_model_name", String(5000), nullable=True),
+    Column("booking_country", String(100), nullable=True),
+    Column("fiscal_qtr_sorted_name", String(5000), nullable=True),
+    Column("level6_cisco_worker_name", String(360), nullable=True),
+    Column("level7_cisco_worker_name", String(360), nullable=True),
+    Column("level8_cisco_worker_name", String(360), nullable=True),
+    Column("emp_cco_id_masked", String(50), nullable=True),
+    Column("mgr_name", String(360), nullable=True),
+    Column("theater", String(500), nullable=True),
+    Column("theater_name", String(5000), nullable=True),
+    Column("sold_as_sw_allocation", Float, nullable=True),
+    Column("sold_as_hw_allocation", Float, nullable=True),
+    Column("sub_allocation_sw", Float, nullable=True),
+    Column("sub_allocation_hw", Float, nullable=True),
+    Column("sw_share_booking", Float, nullable=True),
+    Column("hw_share_booking", Float, nullable=True),
+    Column("booking_contract", Integer, nullable=False),
+    Column("account_name", String(1000), nullable=True),
+    Column("total_share_booking", Float, nullable=True),
+    Column("agreement_start_date", Date(), nullable=True),
+    Column("agreement_end_date", Date(), nullable=True),
+    schema="cps_dsci_br",
+)
