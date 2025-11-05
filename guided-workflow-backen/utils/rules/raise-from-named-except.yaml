@@ -1,0 +1,27 @@
+id: raise-from-named-except
+language: python
+rule:
+  kind: try_statement
+  all:
+    - has:
+        kind: block
+        pattern: $TRYBLOCK
+    - has:
+        kind: except_clause
+        all:
+          - has:
+              kind: identifier
+              pattern: $EXCEPT
+          - has:
+              kind: block
+              pattern: $EXBLOCK
+              has:
+                kind: raise_statement
+
+
+fix: |-
+  try:
+      $TRYBLOCK
+  except $EXCEPT as e:
+      $EXBLOCK from e
+

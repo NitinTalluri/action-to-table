@@ -1,0 +1,31 @@
+id: raise-from-unnamed-except
+language: python
+rule:
+  kind: try_statement
+  all:
+    - has:
+        kind: block
+        pattern: $TRYBLOCK
+    - has:
+        kind: except_clause
+        all:
+          - not:
+                has:
+                    kind: as_pattern
+
+          - has:
+              kind: block
+              pattern: $EXBLOCK
+              has:
+                kind: raise_statement
+                not:
+                  has:
+                    regex: HTTP
+
+
+fix: |-
+  try:
+      $TRYBLOCK
+  except Exception as e:
+      $EXBLOCK from e
+
