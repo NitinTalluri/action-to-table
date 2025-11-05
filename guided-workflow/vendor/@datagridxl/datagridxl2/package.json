@@ -1,0 +1,44 @@
+{
+  "name": "@datagridxl/datagridxl2",
+  "version": "2.0.20",
+  "description": "DataGridXL - Excel-like Experience for Web Apps.",
+  "keywords": [
+    "data",
+    "grid",
+    "table",
+    "editor",
+    "grid-editor",
+    "data-grid",
+    "data-table",
+    "tabular-data",
+    "edit-cell",
+    "editable-table",
+    "data-spreadsheet",
+    "datagridxl",
+    "javascript",
+    "data grid",
+    "data table",
+    "spreadsheet",
+    "excel"
+  ],
+  "homepage": "https://datagridxl.com",
+  "bugs": {
+    "url": "https://github.com/DataGridXL/DataGridXL2/issues",
+    "email": "support@datagridxl.com"
+  },
+  "main": "datagridxl/datagridxl2.umd.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "module": "datagridxl/datagridxl2.esm.js",
+  "author": {
+    "name": "DataGridXL",
+    "email": "contact@datagridxl.com",
+    "url": "https://datagridxl.com"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/datagridxl/datagridxl2.git"
+  }
+}
