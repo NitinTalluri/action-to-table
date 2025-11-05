@@ -1,0 +1,143 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "file://src/domain/resolvers/schemas/schema-inference-fields.schema.json",
+  "title": "Schema Inference Field",
+  "definitions": {
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The internal field name"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9\\s(),_&-]+$"
+          },
+          "description": "Alternative names for the field that should be recognized during schema inference"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "aliases",
+        "displayName"
+      ],
+      "additionalProperties": true
+    },
+    "RequiredField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "required"
+            },
+            "columnName": {
+              "type": "string",
+              "description": "What column, if any, this field is stored in",
+              "pattern": "^[A-z][A-z0-9_]+$"
+            }
+          },
+          "required": [
+            "role",
+            "columnName"
+          ],
+          "not": {
+            "required": [
+              "default"
+            ]
+          }
+        }
+      ]
+    },
+    "OptionalField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "optional"
+            },
+            "columnName": {
+              "type": "string",
+              "description": "What column, if any, this field is stored in",
+              "pattern": "^[A-z][A-z0-9_]+$"
+            },
+            "default": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Default value for the field when not present. Cannot be used with required: true"
+            }
+          },
+          "required": [
+            "role",
+            "columnName",
+            "default"
+          ]
+        }
+      ]
+    },
+    "IgnoredField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "role": {
+              "const": "ignored"
+            }
+          },
+          "required": [
+            "role"
+          ],
+          "not": {
+            "required": [
+              "columnName"
+            ]
+          },
+          "allOf": [
+            {
+              "not": {
+                "required": [
+                  "default"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "Field": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/RequiredField"
+        },
+        {
+          "$ref": "#/definitions/OptionalField"
+        },
+        {
+          "$ref": "#/definitions/IgnoredField"
+        }
+      ]
+    }
+  },
+  "type": "object"
+}

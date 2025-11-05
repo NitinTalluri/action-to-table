@@ -1,0 +1,199 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemaRegistryDefinition",
+  "title": "Schema Inference Registry Definition",
+  "description": "Registry definition for schema inference",
+  "type": "object",
+  "required": [
+    "namespace",
+    "schemas"
+  ],
+  "definitions": {
+    "Identity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The internal field name"
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9\\s(),_&-]+$"
+          },
+          "description": "Alternative names for the field that should be recognized during schema inference"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "aliases",
+        "displayName"
+      ],
+      "additionalProperties": true
+    },
+    "RequiredField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "role": {
+              "const": "required"
+            },
+            "columnName": {
+              "type": "string",
+              "description": "What column, if any, this field is stored in",
+              "pattern": "^[A-z][A-z0-9_]+$"
+            }
+          },
+          "required": [
+            "role",
+            "columnName"
+          ],
+          "not": {
+            "required": [
+              "default"
+            ]
+          }
+        }
+      ]
+    },
+    "OptionalField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+
+          "properties": {
+            "role": {
+              "const": "optional"
+            },
+            "columnName": {
+              "type": "string",
+              "description": "What column, if any, this field is stored in",
+              "pattern": "^[A-z][A-z0-9_]+$"
+            },
+            "default": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Default value for the field when not present. Cannot be used with required: true"
+            }
+          },
+          "required": [
+            "role",
+            "columnName",
+            "default"
+          ]
+        }
+      ]
+    },
+    "IgnoredField": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/Identity"
+        },
+        {
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "role": {
+              "const": "ignored"
+            }
+          },
+          "required": [
+            "role"
+          ],
+          "not": {
+            "required": [
+              "columnName"
+            ]
+          },
+          "allOf": [
+            {
+              "not": {
+                "required": [
+                  "default"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "Field": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/RequiredField"
+        },
+        {
+          "$ref": "#/definitions/OptionalField"
+        },
+        {
+          "$ref": "#/definitions/IgnoredField"
+        }
+      ]
+    }
+  },
+  "properties": {
+    "namespace": {
+      "type": "string",
+      "description": "The namespace for the schemas",
+      "enum": [
+        "collector"
+      ]
+    },
+    "schemas": {
+      "type": "array",
+      "description": "List of schemas in this namespace",
+      "items": {
+        "type": "object",
+        "required": [
+          "schemaName",
+          "displayName",
+          "jsonSchema"
+        ],
+        "properties": {
+          "schemaName": {
+            "type": "string",
+            "description": "The name of the schema (must match a valid schema name in the namespace)",
+            "enum": [
+              "collector_standard",
+              "collector_all",
+              "collector_cx_cloud"
+            ]
+          },
+          "displayName": {
+            "type": "string",
+            "description": "User-friendly name for the schema"
+          },
+          "tableName": {
+            "type": "string",
+            "description": "Which SQL table this is associated with",
+            "pattern": "^[A-z][A-z0-9_]+$"
+          },
+          "jsonSchema": {
+            "type": "object",
+            "description": "Field alias definitions for schema inference",
+            "patternProperties": {
+              "^[a-zA-Z0-9_]+$": {
+                "$ref": "#/definitions/Field"
+              },
+            "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  }
+}
