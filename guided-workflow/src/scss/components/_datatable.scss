@@ -1,0 +1,52 @@
+.data-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-table {
+  min-width: 100%;
+  margin-top: 10px;
+  overflow-wrap: break-word;
+
+  thead {
+    th {
+      padding: 10px 0;
+      text-align: left;
+    }
+  }
+
+  tbody {
+    td {
+      padding: 15px 5px;
+      padding-right: 25px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f6f6f6;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #ffffff;
+    }
+  }
+
+  colgroup > col {
+    max-width: max(200px, calc(100vw / 4));
+    min-width: calc(100vw / 8);
+  }
+
+}
+
+.file-link {
+  color: #0000ee; // default hyperlink color
+  cursor: pointer;
+
+  &:hover {
+    color: #551a8b; // color changes on hover
+    text-decoration: underline;
+  }
+}
+
+.responsive-input {
+  width: 100px;
+}

@@ -1,0 +1,15 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 10px;
+    grid-template-areas:
+      "area1 area2 area4"
+      "area1 area2 area5";
+  }
+  
+  .common { grid-area: area1; }
+  .custom_eng { grid-area: area2; }
+    .custom_user { grid-area: area3; }
+    .currently_in_ts { grid-area: area4; }
+    .delete { grid-area: area5; }

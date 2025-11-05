@@ -1,0 +1,35 @@
+.border_glow_animation {
+  animation: border_glow 2s ease-in-out infinite;
+}
+
+@keyframes border_glow {
+  0% {
+    border-color: transparent;
+    box-shadow: 0 0 0 0 rgba(25, 118, 210, 0);
+  };
+  
+  50% {
+    border-color: rgb(25, 118, 210, 0.8);
+    box-shadow: 0 0 10px 5px rgba(25, 118, 210, 0.3);
+  };
+
+  100% {
+    border-color: rgb(25, 118, 210, 0.8);
+    box-shadow: 0 0 10px 2px rgba(25, 118, 210, 0.3);
+  }
+}
+
+.border_glow_animation--fast {
+  animation: border_glow 1s ease-in-out infinite;
+}
+
+// Variant for slower animation
+.border_glow_animation--slow {
+  animation: border_glow 3s ease-in-out infinite;
+}
+
+// Variant that only runs once
+.border_glow_animation--once {
+  animation: border_glow 1s linear 3;
+}
+
