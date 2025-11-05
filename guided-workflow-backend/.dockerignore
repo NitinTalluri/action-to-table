@@ -1,0 +1,15 @@
+.venv
+venv
+.run
+tests
+.env
+.gitattributes
+.gitignore
+.python-version
+**/*.md
+**/*.py[cod]
+pytest.ini
+sgconfig.json
+**/*.lock
+**/*.env
+CONVENTIONS.md

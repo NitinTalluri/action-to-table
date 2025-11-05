@@ -1,0 +1,101 @@
+[project]
+name = "guided-workflow-backend"
+version = "3.7.3"
+description = ""
+readme = "README.md"
+authors = [
+    {name = "CPS DataScience", email = "cps-datascience@cisco.com"}
+]
+requires-python = ">=3.10"
+dependencies = [
+    "boto3>=1.35.35",
+    "cognitojwt[async]>=1.4.1",
+    "fastapi>=0.115.0",
+    "httpx>=0.28.1",
+    "itsdangerous>=2.2.0",
+    "numpy<2",
+    "pandas<2",
+    "prefect==0.15.13",
+    "pydantic>=1.10.22,<2",
+    "python-dotenv>=1.0.1",
+    "python-multipart>=0.0.12",
+    "pywin32>=307 ; sys_platform == 'win32'",
+    "snowflake-connector-python>=3.15.0",
+    "snowflake-sqlalchemy>=1.6.1",
+    "sqlalchemy>2",
+    "sqlmodel>=0.0.11",
+    "uvicorn>=0.35.0",
+    "xlsxwriter>=3.2.0",
+]
+
+[project.optional-dependencies]
+server = [
+    "gunicorn>=23.0.0 ; sys_platform != 'win32'",
+    "uvicorn-worker>=0.3.0 ; sys_platform != 'win32'",
+    "uvloop>=0.20.0 ; sys_platform != 'win32'",
+    "httptools>=0.6.4"
+]
+linters = [
+    "ruff>=0.9.3",
+]
+
+[tool.ruff]
+exclude = [".git", ".idea", ".vscode", "venv", ".venv", ".mypy_cache", ".pytest_cache", ".ruff", "site-packages", "tests", "scripts"]
+preview = false
+
+[tool.ruff.lint]
+select = ["I", "F", "ASYNC", "B", "C4", "T10", "FA", "ICN", "LOG", "SIM", "ERA", "PD", "PL", "NPY", "RUF", "TCH", "FAST", "LOG", "G"]
+ignore = ["F401", "F403", "PLR0913", "FA100", "FA102", "PLR", "PLC0415", "RUF012", "PD901", "PD011"]
+
+[tool.ruff.lint.per-file-ignores]
+"**/__init__.py" = ["I", "F405", "RUF100"]
+"api/v2/routers/**" = ["TCH001"]
+"api/v2/models/**" = ["TCH001"]
+
+[tool.ruff.lint.flake8-type-checking]
+# Add quotes around type annotations, if doing so would allow
+# an import to be moved into a type-checking block.
+quote-annotations = true
+runtime-evaluated-base-classes = ["pydantic.BaseModel","pydantic.PydanticBaseModel", "api.v2.models.base.V2BaseModel", "fastapi.Depends", "fastapi.Request"]
+exempt-modules = ["api.dependencies", "api.prefect_settings", "typing", "pydantic", "datetime", "decimal", "typing_extensions"]
+strict = false
+
+[tool.uv]
+dev-dependencies = [
+    "ast-grep-cli>=0.28.0",
+    "httpx>=0.27.2",
+    "hypothesis>=6.112.4",
+    "pytest-mock>=3.14.0",
+    "pytest>=8.3.3",
+    "pytest-asyncio>=0.24.0",
+    "pytest-dependency>=0.6.0",
+    "pre-commit>=4.1.0",
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.11",
+    "mkdocstrings[python]>=0.29.1",
+    "pymdown-extensions>=10.14.3",
+    "griffe-pydantic>=1.1.4",
+    "pytest-benchmark>=5.1.0",
+    "keyring>=25.6.0",
+    "griffe-typingdoc>=0.2.8",
+    "boto3-stubs-lite[cognito-idp,essential]>=1.38.30",
+    "sqlglot>=27.6.0",
+]
+
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --capture=tee-sys"
+filterwarnings = ["ignore::DeprecationWarning"]
+asyncio_mode = "auto"
+mock_use_standalone_module = false
+asyncio_default_fixture_loop_scope = "function"
+log_cli=true
+log_cli_level="INFO"
+log_level="INFO"
+log_format="%(asctime)s [%(levelname)s] %(message)s"
+required_plugins = ["anyio", "pytest-mock", "pytest-benchmark"]
+
+[dependency-groups]
+server = [
+    "httptools>=0.6.4",
+]

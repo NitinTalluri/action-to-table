@@ -1,0 +1,25 @@
+version: 0.2
+
+env:
+  variables:
+    DOCKER_BUILDKIT: "1"
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR....
+      - aws --version
+      - $(aws ecr get-login --no-include-email --region us-east-1)
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 837578041534.dkr.ecr.us-east-1.amazonaws.com/docker-hub
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+      - PACKAGE_VERSION=$(grep '^version' pyproject.toml | cut -d '"' -f 2)
+  build:
+    commands:
+      - echo Build started on $(date)
+      - docker build -t $REPOSITORY_URI:latest -t $REPOSITORY_URI:$IMAGE_TAG -t $REPOSITORY_URI:$PACKAGE_VERSION .
+      - docker push $REPOSITORY_URI:latest
+      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      - docker push $REPOSITORY_URI:$PACKAGE_VERSION
+
+

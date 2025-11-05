@@ -1,0 +1,44 @@
+site_name: Data Canvas API
+theme:
+  name: material
+
+nav:
+  - Main: main.md
+  - Features:
+      - Time Tracking: features/time_tracking.md
+      - Parent Customer View: features/Parent_Customer_View.md
+  - Models:
+      - User: models/users.md
+
+plugins:
+  - search
+  - autorefs
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: ["."]
+          options:
+            allow_inspection: true
+            group_by_category: true
+            show_labels: false
+            annotations_path: source
+            show_signature: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            unwrap_annotated: true
+            docstring_section_style: spacy
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            separate_signature: true
+            extensions:
+              - griffe_typingdoc
+              - griffe_pydantic:
+                  schema: false
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      default_lang: python
