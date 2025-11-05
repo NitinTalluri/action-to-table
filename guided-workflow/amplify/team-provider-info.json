@@ -1,0 +1,25 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-datacanvas-dev-130234-authRole",
+      "UnauthRoleArn": "arn:aws:iam::837578041534:role/amplify-datacanvas-dev-130234-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::837578041534:role/amplify-datacanvas-dev-130234-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-datacanvas-dev-130234-deployment",
+      "UnauthRoleName": "amplify-datacanvas-dev-130234-unauthRole",
+      "StackName": "amplify-datacanvas-dev-130234",
+      "StackId": "arn:aws:cloudformation:us-east-1:837578041534:stack/amplify-datacanvas-dev-130234/27d28530-a32c-11ed-8497-0e9eac0d0f09",
+      "AmplifyAppId": "d143x0qttx7ih2"
+    },
+    "categories": {
+      "auth": {
+        "datacanvas6eeddbf5": {
+          "userPoolId": "us-east-1_zsqRXIlpZ",
+          "userPoolName": "data-canvas",
+          "webClientId": "5bh0nl3t3l0hf8ubbhhoniocu1",
+          "nativeClientId": "5bh0nl3t3l0hf8ubbhhoniocu1"
+        }
+      }
+    }
+  }
+}
