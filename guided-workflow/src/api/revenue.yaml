@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: Financial Admin Revenue
+  version: 1.0.0
+servers:
+  - url: "https"
+paths:
+  /api/v2/admin/financial/revenue/contracts:
+    post:
+      summary: Submit Revenue Contracts
+      requestBody:
+        description: Revenue Contracts
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/RevenueContract"
+      responses:
+        "200":
+          description: Created. Response verified as true
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/RevenueContract"
+        "422":
+          description: Bad Request. Validation error
+components:
+  schemas:
+    RevenueContract:
+      type: object
+      properties:
+        fiscal_period_id:
+          type: integer
+          nullable: true
+          default: 0
+        fiscal_year:
+          type: integer
+          nullable: true
+          default: 0
+        fiscal_quarter_id:
+          type: string
+          nullable: true
+          default: ""
+        sales_level_1:
+          type: string
+          nullable: true
+          default: ""
+        sales_level_2:
+          type: string
+          nullable: true
+          default: ""
+        finance_sub_group_or_contract_type:
+          type: string
+          nullable: true
+          default: ""
+        mktg_part_id:
+          type: string
+          nullable: true
+          default: ""
+        finance_bu_or_service_category:
+          type: string
+          nullable: true
+          default: ""
+        contract_number:
+          type: integer
+          minimum: 1
+        transaction_number:
+          type: integer
+          nullable: true
+          default: 0
+        transaction_type:
+          type: string
+          nullable: true
+          default: ""
+        transaction_date:
+          type: string
+          format: date
+        contract_start_date:
+          type: string
+          format: date
+        contract_end_date:
+          type: string
+          format: date
+        contract_term:
+          type: integer
+          nullable: true
+          default: 0
+        total_amount:
+          type: integer
+          minimum: 1
