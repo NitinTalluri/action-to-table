@@ -1,0 +1,33 @@
+
+sequenceDiagram
+    participant App as Client Application
+    participant Python as Python Script (Orchestrator)
+    participant LC as LangChain/Bedrock Client
+    participant LLM as Claude 3.5 Sonnet (Parser)
+
+    App->>Python: 1. analyze_snowflake_ddl(DDL_Script)
+    activate Python
+
+    Python->>Python: 2. Initialize LLM (get_bedrock_llm)
+    Python->>Python: 3. Infer Alias Mapping (e.g., sd -> dc_table)
+
+    Note over Python,LLM: Structured Output Configuration (Pydantic Schema enforced)
+
+    Python->>LC: 4. Chain.invoke(DDL, Pydantic Schema, System Prompt)
+    activate LC
+
+    LC->>LLM: 5. Send API Request (SQL DDL + Tool Definition)
+    activate LLM
+    LLM-->>LLM: 6. Analyze SQL: Extract Columns, Joins, Transformations
+    LLM-->>LLM: 7. Generate JSON conforming to SnowflakeViewDetails schema
+    LLM->>LC: 8. Return Structured JSON Response
+    deactivate LLM
+
+    LC->>LC: 9. Validate JSON against Pydantic model
+    LC->>Python: 10. Return validated Pydantic Object
+    deactivate LC
+
+    Python->>Python: 11. Post-process (e.g., resolve full source tables)
+    Python->>Python: 12. save_to_csv(result)
+    Python->>App: 13. Return SnowflakeViewDetails Object
+    deactivate Python

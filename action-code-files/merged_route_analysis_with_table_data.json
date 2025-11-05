@@ -1,0 +1,2235 @@
+{
+  "api\\health\\healthcheck.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "healthcheck",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\announcements.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_announcement",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ANNOUNCEMENTS",
+        "DC_USER_TO_ANNOUNCEMENT",
+        "DC_ANNOUNCEMENT_LINK"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "",
+      "function": "list_announcements",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "ORGANIZATIONAL_HIERARCHY",
+        "DC_ANNOUNCEMENTS",
+        "DC_USER_TO_ANNOUNCEMENT",
+        "DC_ANNOUNCEMENT_LINK"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{announcement_id}",
+      "function": "get_announcement",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ANNOUNCEMENTS",
+        "DC_USER_TO_ANNOUNCEMENT",
+        "DC_ANNOUNCEMENT_LINK"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{announcement_id}",
+      "function": "update_announcement",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ANNOUNCEMENTS",
+        "DC_USER_TO_ANNOUNCEMENT",
+        "DC_ANNOUNCEMENT_LINK"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{announcement_id}/status",
+      "function": "update_announcement_status",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ANNOUNCEMENTS",
+        "DC_USER_TO_ANNOUNCEMENT",
+        "DC_ANNOUNCEMENT_LINK"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{announcement_id}",
+      "function": "delete_announcement",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\canvas.py": [
+    {
+      "method": "GET",
+      "path": "/snapshots",
+      "function": "get_snapshots",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_snapshot_data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/rebuild",
+      "function": "rebuild_canvas",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "rebuild_canvas_flow"
+      ],
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_canvas_hdr",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_canvas",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_canvas_flow"
+      ],
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{engagement_id}/canvas/{canvas_id}",
+      "function": "delete_canvas",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "emit_canvas_deleted"
+      ],
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_canvas_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{engagement_id}/data_sources",
+      "function": "get_data_sources",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_acat_links",
+        "dc_smart_account_links",
+        "dc_mce_links",
+        "dc_data_sources"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{engagement_id}/evidence_uploads",
+      "function": "get_evidence_uploads",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_user_defined_type",
+        "dc_evidence_customer_hdr",
+        "dc_evidence_collector_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_canvas_data_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_FILE_MANAGEMENT_LIVEBOARDS",
+        "DC_USERS",
+        "DC_CAM_TO_ENGAGEMENT",
+        "DC_CANVAS_HDR",
+        "DC_TAG_THOUGHTSPOT"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{canvas_id}/parameters",
+      "function": "get_canvas_creation_parameters",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_background_job"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/1/deleted",
+      "function": "get_deleted_canvas",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_CANVAS_HDR"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/1/undelete/{canvas_id}",
+      "function": "undelete_canvas_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_canvas_hdr"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{canvas_id}/enable",
+      "function": "enable_canvas",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_canvas_hdr"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\contracts.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_contract_asset_mgt_types",
+        "dc_cam_to_engagement",
+        "dc_users",
+        "dc_contract_monitor_types",
+        "dc_contract_types",
+        "dc_engagement_hdr",
+        "dc_engagement_contracts"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{dc_engagement_id}",
+      "function": "create_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr",
+        "dc_engagement_contracts"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}",
+      "function": "update_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_engagement_contracts",
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{engagement_id}/{contract_number}",
+      "function": "delete_contract",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_engagement_contracts",
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/monitor/{dc_engagement_id}",
+      "function": "extract_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_monitor_service_contracts",
+        "dc_engagement_hdr",
+        "DC_CONTRACT_MONITOR_TYPES"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/monitor/{dc_engagement_id}",
+      "function": "create_unmanaged_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_monitor_service_contracts",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/monitor/{dc_engagement_id}",
+      "function": "put_unmanaged_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_monitor_service_contracts",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/monitor/{dc_engagement_id}/{contract_number}",
+      "function": "delete_unmanaged_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_monitor_service_contracts",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/booking/{dc_engagement_id}",
+      "function": "get_booking_contracts",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "dc_cam_to_engagement",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_users",
+        "dc_booking_contracts_extensions",
+        "dc_pricing_model",
+        "dc_sold_as_service_types",
+        "dc_engagement_hdr",
+        "dc_managed_service_contracts",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/managed/{dc_engagement_id}",
+      "function": "net_managed_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "dc_engagement_to_bookings_responsible_user",
+        "DC_MANAGED_SERVICE_CONTRACTS",
+        "dc_booking_contracts_extensions",
+        "dc_pricing_model",
+        "dc_sold_as_service_types",
+        "DC_USERS",
+        "DC_BOOKINGS_CONTRACTS_RESPONSIBLE_USERS",
+        "dc_users",
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "dc_managed_service_contracts",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/linkable/",
+      "function": "linkable_contracts_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "dc_users",
+        "dc_bookings_user_role",
+        "dc_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "dc_BOOKINGS_CONTRACTS",
+        "dc_pricing_model",
+        "dc_sold_as_service_types",
+        "dc_engagement_hdr",
+        "dc_BOOKINGS_CONTRACTS_RESPONSIBLE_USERS"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\dc_types.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "v2_get_dc_types",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_user_role",
+        "dc_typ_sign_off_identity",
+        "dc_sales_level"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\engagements.py": [
+    {
+      "method": "GET",
+      "path": "/users",
+      "function": "get_available_users_for_sharing",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/engagement_owners/{engagement_id}",
+      "function": "get_user_engagement_owners_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_users_engagements",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_engagement_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}",
+      "function": "update_engagement_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{dc_engagement_id}",
+      "function": "delete_engagement_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{engagement_id}/share/{cco_id}",
+      "function": "create_user_to_engagement_link",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "DELETE",
+      "path": "/{engagement_id}/share/{cco_id}",
+      "function": "delete_user_link",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "GET",
+      "path": "/deleted",
+      "function": "get_deleted_engagements",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ENGAGEMENT_HDR"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{dc_engagement_id}",
+      "function": "undelete_engagement_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_engagement_hdr"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\file_management.py": [
+    {
+      "method": "GET",
+      "path": "/file_management_json/get_state",
+      "function": "get_file_state_V2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_FILE_MANAGEMENT_LIVEBOARDS",
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/file_management_json/post_state",
+      "function": "set_file_state_V2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_FILE_MANAGEMENT_LIVEBOARDS",
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/archived/{dc_engagement_id}/{canvas_id}",
+      "function": "get_archived_files_for_canvas",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_FILE_MANAGEMENT_LIVEBOARDS",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr",
+        "DC_CANVAS_HDR",
+        "dc_canvas_hdr"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\links.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_links_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_MCE_LINKS",
+        "DC_ACAT_LINKS",
+        "DC_SMART_ACCOUNT_LINKS",
+        "DC_ENGAGEMENT_HDR",
+        "DC_PARTY_LINKS"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{dc_engagement_id}/{link_type}",
+      "function": "v2_create_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}/{link_type}/{link_id}",
+      "function": "v2_update_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{dc_engagement_id}/{link_type}/{link_id}",
+      "function": "v2_delete_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\stakeholders.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_stakeholders",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr",
+        "dc_engagement_stakeholders"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{dc_engagement_id}",
+      "function": "create_engagement_stakeholder",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}/{stakeholder_id}",
+      "function": "update_engagement_stakeholder",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr",
+        "dc_engagement_stakeholders"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{dc_engagement_id}/{stakeholder_id}",
+      "function": "delete_engagement_stakeholder",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr",
+        "dc_engagement_stakeholders"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\static.py": [
+    {
+      "method": "GET",
+      "path": "/html",
+      "function": "get_static_html_presigned_url",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\tags.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_tags_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_tags",
+        "dc_tagset",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{dc_engagement_id}",
+      "function": "create_engagement_tag_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_tags",
+        "dc_tagset",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}/{tag_id}",
+      "function": "update_engagement_tag_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_tags",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{tag_id}",
+      "function": "delete_engagement_tag_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset",
+        "dc_cam_to_engagement",
+        "dc_users",
+        "dc_tags",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/1/global",
+      "function": "create_engagement_tag_v2_GLOBAL",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/1/global/{tag_id}",
+      "function": "update_engagement_tag_v2_GLOBAL",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tags",
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/1/global/{tag_id}",
+      "function": "delete_engagement_tags_v2_GLOBAL",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tags",
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/1/deleted",
+      "function": "get_deleted_engagement_tags_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_TAGSET",
+        "DC_tags"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/1/undelete/{tag_id}",
+      "function": "undelete_tags_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tags"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\tagsets.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_tagsets_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_TAGS",
+        "DC_TAGSET"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/1/global",
+      "function": "get_global_tagsets_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_TAGS",
+        "DC_TAGSET"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/for_tagging",
+      "function": "get_engagement_tagsets_v2_for_tagging",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_TAGS",
+        "DC_TAGSET"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/extract/{dc_engagement_id}",
+      "function": "extract_engagement_tagsets_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_CAM_TO_ENGAGEMENT",
+        "DC_TAGSET",
+        "DC_TAGS",
+        "DC_USERS"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{dc_engagement_id}",
+      "function": "create_engagement_tagset_v2",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "emit_tagset_created"
+      ],
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{dc_engagement_id}/{tagset_id}",
+      "function": "update_engagement_tagset_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/1/global",
+      "function": "create_global_tagset_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/1/global/{tagset_id}",
+      "function": "update_global_tagset_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/1/global/{tagset_id}",
+      "function": "delete_global_tagset_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/1/deleted",
+      "function": "get_deleted_tagsets_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_TAGSET"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/1/undelete/{tagset_id}",
+      "function": "undelete_tagset_v2",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_tagset"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\thought_spot.py": [
+    {
+      "method": "POST",
+      "path": "/upload/{engagement_id}",
+      "function": "upload_thoughtspot_task",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_thoughtspot_instance_requests",
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{engagement_id}",
+      "function": "get_thoughtspot_engagement_tasks",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_tagset",
+        "dc_users",
+        "dc_tags",
+        "tagset_ids",
+        "dc_engagement_hdr",
+        "dc_thoughtspot_instance_requests",
+        "dc_canvas_hdr",
+        "tag_ids"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/canvas_tasks/{canvas_id}",
+      "function": "get_thoughtspot_canvas_tasks",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_tagset",
+        "dc_users",
+        "dc_tags",
+        "tagset_ids",
+        "dc_engagement_hdr",
+        "dc_thoughtspot_instance_requests",
+        "dc_canvas_hdr",
+        "tag_ids"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/actions/extracts",
+      "function": "process_ts_extract_tasks",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "",
+      "function": "delete_thoughtspot_tasks",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_thoughtspot_instance_requests"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/refresh-tagsets",
+      "function": "refresh_tagsets",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "refresh_canvas_view_flow"
+      ],
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/discover",
+      "function": "run_discovery_flow",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "emit_liveboard_discovery_requested"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\thought_spot_tag.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "tagging_task_runner",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_thoughtspot_tagging_flow"
+      ],
+      "tables": [
+        "dc_thoughtspot_instance_requests"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\users.py": [
+    {
+      "method": "GET",
+      "path": "/whoami",
+      "function": "get_user_id",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\user_defined_types.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_user_defined_types",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_user_defined_type"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_user_defined_type",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_user_defined_type"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "",
+      "function": "delete_user_defined_type",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_user_defined_type"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "",
+      "function": "edit_user_defined_type",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_user_defined_type"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\financial\\contracts.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_contract_entries",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "import_bookings"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\financial\\revenue.py": [
+    {
+      "method": "POST",
+      "path": "/sea",
+      "function": "create_sea_revenue_entries",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "import_sea_entries"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/cxea",
+      "function": "create_cxea_revenue_entries",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "import_cxea_revenue_2"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/htec",
+      "function": "create_htec_revenue_entries",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "import_htec_revenue_2"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/cogs",
+      "function": "create_cogs_revenue_entries",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "import_cogs_2"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/clear/{revenue_type}",
+      "function": "truncate_revenue_table",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "POST",
+      "path": "/process",
+      "function": "process_revenue_tables",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "process_revenue"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\financial\\unverified.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_unverified_bookings",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "verify_booking",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\admin\\financial\\verified.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_verified_bookings",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{booking_contract}",
+      "function": "get_verified_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{booking_contract}/calculated",
+      "function": "update_verified_booking_calculated",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{booking_contract}/dc_types",
+      "function": "update_verified_booking_dc_types",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "dc_theater",
+        "dc_bookings_contracts_lineage",
+        "dc_pricing_model",
+        "dc_sold_as_service_types"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{booking_contract}/assignments",
+      "function": "update_verified_booking_assignments",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\sdp\\deliverables.py": [
+    {
+      "method": "GET",
+      "path": "/{deliverable_id}",
+      "function": "get_sdp_deliverable",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_deliverable",
+        "dc_sdp_b_task_to_deliverable"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_sdp_deliverable",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_b_task_to_deliverable",
+        "dc_sdp_typ_deliverable",
+        "dc_sdp_typ_task"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{deliverable_id}",
+      "function": "edit_sdp_deliverable",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_b_task_to_deliverable",
+        "dc_sdp_typ_deliverable",
+        "dc_sdp_typ_task"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{deliverable_id}",
+      "function": "delete_sdp_deliverable",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_deliverable",
+        "dc_sdp_b_task_to_deliverable"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\sdp\\lifecycles.py": [
+    {
+      "method": "GET",
+      "path": "/{life_cycle_id}",
+      "function": "get_sdp_life_cycle",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_lifecycle"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/",
+      "function": "create_sdp_life_cycle",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_lifecycle"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{lifecycle_id}",
+      "function": "edit_sdp_lifecycle",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_lifecycle"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{lifecycle_id}",
+      "function": "delete_sdp_life_cycle",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_lifecycle"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\sdp\\sdp.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_sdp",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_ANCHOR_DATE",
+        "DC_SDP_TYP_SUBTASK",
+        "DC_SDP_B_TASK_TO_DELIVERABLE",
+        "DC_SDP_TYP_TASK",
+        "DC_SDP_TYP_ANCHOR_DATE_ITERATOR",
+        "DC_SDP_TYP_DELIVERABLE",
+        "DC_SDP_B_TASK_SUB_TASK"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/rebuild",
+      "function": "rebuild_sdp",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\admin\\sdp\\subtasks.py": [
+    {
+      "method": "GET",
+      "path": "/{sub_task_id}",
+      "function": "get_sdp_subtask",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_SUBTASK",
+        "DC_SDP_TYP_TASK",
+        "DC_SDP_SUB_TASK_TO_ENAB_PRICING",
+        "DC_SDP_SUB_TASK_TO_ENAB_SOLD_AS",
+        "DC_SDP_SUB_TASK_TO_ENAB_BUYING",
+        "DC_SDP_B_TASK_SUB_TASK"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_sdp_subtask",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "DC_SDP_TYP_SUBTASK",
+        "dc_sdp_b_task_sub_task",
+        "DC_SDP_TYP_TASK",
+        "DC_SDP_B_TASK_SUB_TASK",
+        "dc_pricing_model",
+        "dc_sdp_sub_task_to_enab_pricing",
+        "dc_sold_as_service_types",
+        "dc_sdp_typ_task",
+        "dc_sdp_sub_task_to_enab_sold_as",
+        "DC_SDP_SUB_TASK_TO_ENAB_BUYING",
+        "dc_sdp_sub_task_to_enab_buying",
+        "DC_SDP_SUB_TASK_TO_ENAB_PRICING",
+        "DC_SDP_SUB_TASK_TO_ENAB_SOLD_AS"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{sub_task_id}",
+      "function": "edit_sdp_subtask",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs",
+        "DC_SDP_TYP_SUBTASK",
+        "dc_sdp_b_task_sub_task",
+        "DC_SDP_TYP_TASK",
+        "DC_SDP_B_TASK_SUB_TASK",
+        "dc_sdp_typ_subtask",
+        "dc_pricing_model",
+        "dc_sdp_sub_task_to_enab_pricing",
+        "dc_sold_as_service_types",
+        "dc_sdp_typ_task",
+        "dc_sdp_sub_task_to_enab_sold_as",
+        "DC_SDP_SUB_TASK_TO_ENAB_BUYING",
+        "dc_sdp_sub_task_to_enab_buying",
+        "DC_SDP_SUB_TASK_TO_ENAB_PRICING",
+        "DC_SDP_SUB_TASK_TO_ENAB_SOLD_AS"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{sub_task_id}",
+      "function": "delete_sdp_subtask",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_typ_subtask",
+        "dc_sdp_sub_task_to_enab_pricing",
+        "dc_sdp_b_task_sub_task",
+        "dc_sdp_sub_task_to_enab_buying"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\admin\\sdp\\tasks.py": [
+    {
+      "method": "GET",
+      "path": "/{task_id}",
+      "function": "get_sdp_task",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_SUBTASK",
+        "DC_SDP_B_TASK_TO_DELIVERABLE",
+        "DC_SDP_TYP_TASK",
+        "DC_SDP_TYP_DELIVERABLE",
+        "DC_SDP_B_TASK_SUB_TASK"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_sdp_task",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_SUBTASK",
+        "dc_sdp_b_task_sub_task",
+        "DC_SDP_TYP_TASK",
+        "dc_sdp_typ_anchor_date",
+        "DC_SDP_B_TASK_SUB_TASK",
+        "dc_sdp_typ_anchor_date_iterator",
+        "dc_sdp_typ_subtask",
+        "DC_SDP_B_TASK_TO_DELIVERABLE",
+        "dc_sdp_b_task_to_deliverable",
+        "dc_sdp_typ_deliverable",
+        "DC_SDP_TYP_DELIVERABLE"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{task_id}",
+      "function": "edit_sdp_task",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_SUBTASK",
+        "dc_sdp_b_task_sub_task",
+        "DC_SDP_TYP_TASK",
+        "dc_sdp_typ_anchor_date",
+        "DC_SDP_B_TASK_SUB_TASK",
+        "dc_sdp_typ_anchor_date_iterator",
+        "dc_sdp_typ_subtask",
+        "DC_SDP_B_TASK_TO_DELIVERABLE",
+        "dc_sdp_b_task_to_deliverable",
+        "dc_sdp_typ_deliverable",
+        "dc_sdp_typ_task",
+        "DC_SDP_TYP_DELIVERABLE"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{task_id}",
+      "function": "delete_sdp_task",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sdp_b_task_to_deliverable",
+        "dc_sdp_typ_task",
+        "dc_sdp_b_task_sub_task"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\documentation\\documentation.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_documentation_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_documentation_links"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "",
+      "function": "query_documentation_links",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_documentation_links"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{doc_id}",
+      "function": "get_documentation_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_documentation_links"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/{doc_id}",
+      "function": "update_documentation_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_documentation_links"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{doc_id}",
+      "function": "delete_documentation_link",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_documentation_links"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\assignments.py": [
+    {
+      "method": "POST",
+      "path": "/replace",
+      "function": "replace_responsible_user",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage",
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "DC_BUYING_PROGRAMS",
+        "dc_sales_level",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "dc_engagement_hdr",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "",
+      "function": "put_booking_assignments",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\bookings_common.py": [
+    {
+      "method": "GET",
+      "path": "/claimed",
+      "function": "get_claimed_bookings",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SALES_LEVEL",
+        "dc_bookings_contracts_lineage",
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_WF_DISENGAGE",
+        "dc_engagement_hdr",
+        "DC_BOOKINGS_CONTRACTS",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/claimed/{booking_contract}",
+      "function": "update_booking_defaults",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage",
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "dc_bookings_contracts_responsible_users",
+        "dc_engagement_hdr",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/engagements",
+      "function": "get_available_engagements",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/sales_levels",
+      "function": "assign_sales_levels_bulk",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_sales_level"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\bookings_manager.py": [
+    {
+      "method": "PATCH",
+      "path": "/claimed/{booking_contract}/dc_types",
+      "function": "update_claimed_booking_dc_types",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage",
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "dc_bookings_contracts_responsible_users",
+        "dc_engagement_hdr",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/claimed/{booking_contract}/allocation_ratio",
+      "function": "update_claimed_booking_allocation_ratios",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/unclaimed",
+      "function": "get_unclaimed_bookings",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_WF_DISENGAGE",
+        "dc_bookings_contracts_lineage",
+        "DC_BOOKINGS_CONTRACTS",
+        "DC_BUYING_PROGRAMS",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_sales_level"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/renewals",
+      "function": "get_available_to_renew_from",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_bookings_contracts_lineage",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_bookings_contracts",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "dc_bookings_contracts_responsible_users",
+        "dc_engagement_hdr",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_sales_level"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/claim/{booking_contract}",
+      "function": "claim_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/claim/{booking_contract}",
+      "function": "unclaim_booking",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "POST",
+      "path": "/disengage/{booking_contract}",
+      "function": "disengage_booking",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "POST",
+      "path": "/extend/{booking_contract}",
+      "function": "extend_booking_contract",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/prospective",
+      "function": "create_prospective_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/prospective/{booking_contract}",
+      "function": "update_prospective_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_completed_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng",
+        "dc_sales_level",
+        "dc_bookings_contracts_lineage",
+        "DC_BUYING_PROGRAMS",
+        "ORGANIZATIONAL_HIERARCHY",
+        "dc_users",
+        "DC_BOOKINGS_CONTRACTS",
+        "dc_wf_disengage",
+        "DC_BOOKING_CONTRACTS_EXTENSIONS",
+        "dc_bookings_contracts_responsible_users"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/prospective/{booking_contract}",
+      "function": "delete_prospective_booking",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\manager\\pool_manager.py": [
+    {
+      "method": "PUT",
+      "path": "",
+      "function": "set_pool_manager",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_buying_programs"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\sdp.py": [
+    {
+      "method": "GET",
+      "path": "/{booking_contract}",
+      "function": "get_sdp_for_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_cisco_deliverables",
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_engagement_hdr",
+        "dc_bookings_contracts",
+        "dc_deliverables_owed_scheduled_eng"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{booking_contract}",
+      "function": "rebuild_sdp_for_booking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_engagement_to_bookings_responsible_user",
+        "dc_bookings_contracts",
+        "dc_users",
+        "dc_cisco_deliverables",
+        "dc_engagement_hdr",
+        "dc_deliverables_owed_scheduled_eng"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\super_customers.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_super_customers",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ENGAGEMENT_HDR",
+        "DC_SUPER_CUSTOMER",
+        "DC_SUPER_CUSTOMER_ENGAGEMENTS"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_super_customer",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "V2ProcedureNames.create_super_customer"
+      ],
+      "tables": [
+        "DC_ENGAGEMENT_HDR",
+        "DC_SUPER_CUSTOMER",
+        "DC_SUPER_CUSTOMER_ENGAGEMENTS"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{super_customer_id}",
+      "function": "update_super_customer",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "V2ProcedureNames.update_super_customer"
+      ],
+      "tables": [
+        "DC_ENGAGEMENT_HDR",
+        "DC_SUPER_CUSTOMER",
+        "DC_SUPER_CUSTOMER_ENGAGEMENTS"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/{super_customer_id}",
+      "function": "delete_super_customer",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "V2ProcedureNames.delete_super_customer"
+      ],
+      "tables": [
+        "DC_ENGAGEMENT_HDR",
+        "DC_SUPER_CUSTOMER",
+        "DC_SUPER_CUSTOMER_ENGAGEMENTS"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\manager\\users.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_manager_users",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\sdp\\completions.py": [
+    {
+      "method": "PUT",
+      "path": "",
+      "function": "put_sdp_completion",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\sdp\\deliverables.py": [
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/deliverables",
+      "function": "get_user_engagement_deliverables",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_DELIVERABLES_CORE_ENG",
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_USERS"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/deliverables/scheduled",
+      "function": "get_user_engagement_scheduled_deliverables",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_DELIVERABLES_OWED_SCHEDULED_ENG",
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_USERS"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/deliverables/closed",
+      "function": "get_user_engagement_closed_deliverables",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_DELIVERABLES_CLOSED_VIEW_ENG",
+        "DC_USERS"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/deliverables/active",
+      "function": "get_user_engagement_active_deliverables",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_DELIVERABLES_LIVE_ENG",
+        "DC_USERS"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\sdp\\time_tracking.py": [
+    {
+      "method": "GET",
+      "path": "/weekly",
+      "function": "get_weekly_view",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TIME_ENTRY",
+        "DATE"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_user_time_tracking",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_SDP_TYP_ABSTRACT_DELIVERABLE",
+        "DAYS",
+        "DC_SDP_TIME_ENTRY",
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_USERS",
+        "DC_DELIVERABLES_OWED_SCHEDULED_ENG",
+        "DC_ENGAGEMENT_HDR"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "submit_user_time_tracking",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "put_user_time_entries"
+      ],
+      "tables": [
+        "DC_SDP_TYP_ABSTRACT_DELIVERABLE",
+        "DAYS",
+        "DC_SDP_TIME_ENTRY",
+        "DC_ENGAGEMENT_TO_BOOKINGS_RESPONSIBLE_USER",
+        "DC_USERS",
+        "DC_DELIVERABLES_OWED_SCHEDULED_ENG",
+        "DC_ENGAGEMENT_HDR"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\support\\agent.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_cases",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_support_cases"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/available_agents",
+      "function": "get_available_agents",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{case_id}",
+      "function": "get_case",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_support_cases"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/{case_id}",
+      "function": "update_case",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_users",
+        "dc_support_cases"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\support\\user.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_support_case",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_support_cases"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_user_support_cases",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_support_cases"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{case_id}/close",
+      "function": "close_user_support_case",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_support_cases"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\actions.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_actions",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_action_item"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{ui_enum}",
+      "function": "get_action",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_action_item"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\downloads.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "get_presigned_url",
+      "Category": "Backend, Frontend"
+    }
+  ],
+  "api\\v2\\routers\\workflows\\evidence_uploads.py": [
+    {
+      "method": "POST",
+      "path": "/customer",
+      "function": "submit_customer_file",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_evidence_customer_flow"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/collector",
+      "function": "submit_collector_file",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_evidence_collector_flow"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\lookups.py": [
+    {
+      "method": "POST",
+      "path": "/acat-discovery",
+      "function": "generate_acat_report",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_acat_discovery_flow"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/snif-report",
+      "function": "generate_snif_report",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/site-report",
+      "function": "generate_site_report",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/tag-history",
+      "function": "generate_tag_history_report",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_tag_history_flow"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/host-name-site-moves",
+      "function": "generate_host_name_site_moves",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_host_name_site_moves_flow"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/host-name-relink",
+      "function": "generate_host_name_relink",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_host_name_relink_flow"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\macd.py": [
+    {
+      "method": "GET",
+      "path": "/schemas",
+      "function": "get_macd_schemas",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "GET",
+      "path": "/submissions/{dc_engagement_id}",
+      "function": "get_macd_submissions",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_WF_MACD_UPLOAD_HDR"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "post_macd_submission",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "load_macd_data"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/audit",
+      "function": "post_macd_audit",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_macd_audit_flow"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\notifications.py": [
+    {
+      "method": "GET",
+      "path": "",
+      "function": "get_notifications",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_CAM_TO_ENGAGEMENT",
+        "DC_WF_ACTION_ITEM",
+        "DC_WF_BACKGROUND_JOB",
+        "DC_WF_NOTIFICATION"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}",
+      "function": "get_engagement_notifications",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_WF_NOTIFICATION",
+        "DC_WF_BACKGROUND_JOB",
+        "DC_WF_ACTION_ITEM"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/{dc_engagement_id}/{notification_id}",
+      "function": "get_notification",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_WF_NOTIFICATION",
+        "DC_WF_BACKGROUND_JOB",
+        "DC_WF_ACTION_ITEM"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "",
+      "function": "create_user_notifications",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_background_job"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/{notification_id}/{status}",
+      "function": "update_notification_status",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_notification"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/message/{notification_id}",
+      "function": "update_notification",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_wf_notification"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\sea_upload.py": [
+    {
+      "method": "POST",
+      "path": "/sea_upload",
+      "function": "submit_sea_upload",
+      "Category": "Backend, Frontend",
+      "stored_procedures": [
+        "load_sea_data"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\signoff.py": [
+    {
+      "method": "POST",
+      "path": "",
+      "function": "submit_sign_off",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_cam_to_engagement",
+        "dc_engagement_hdr"
+      ]
+    }
+  ],
+  "api\\v2\\routers\\workflows\\workflow_tagging.py": [
+    {
+      "method": "POST",
+      "path": "/serial_tagging",
+      "function": "submit_serial_tagging",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_serial_tagging_flow"
+      ],
+      "tables": [
+        "DC_TAGS"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/instance_tagging",
+      "function": "submit_instance_tagging",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_instance_tagging_flow"
+      ],
+      "tables": [
+        "DC_TAGS"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/bulk_instance_tagging",
+      "function": "submit_bulk_instance_tagging",
+      "Category": "Backend, Frontend",
+      "flow_calls": [
+        "create_bulk_tagging_flow"
+      ]
+    }
+  ],
+  "tests\\test_bookings\\test_sdp_for_booking.py": [
+    {
+      "method": "PATCH",
+      "path": "api.v2.services.external.prefect_v3_flow_service.PrefectV3APIMixin._emit_api_event",
+      "function": "test_rebuild_sdp_for_booking_with_new_shares",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "DC_CAM_TO_ENGAGEMENT"
+      ]
+    }
+  ],
+  "tests\\test_sdp\\test_sdp_due_date_integration.py": [
+    {
+      "method": "PATCH",
+      "path": "api.v2.services.external.prefect_v3_flow_service.PrefectV3APIMixin._emit_api_event",
+      "function": "test_1_create_dummy_booking_and_rebuild_sdp",
+      "Category": "Backend, Frontend"
+    },
+    {
+      "method": "PATCH",
+      "path": "api.v2.services.external.prefect_v3_flow_service.PrefectV3APIMixin._emit_api_event",
+      "function": "test_2_update_dates_and_rebuild_sdp",
+      "Category": "Backend, Frontend",
+      "tables": [
+        "dc_deliverables_owed_scheduled_eng"
+      ]
+    }
+  ]
+}
