@@ -3639,3 +3639,43 @@ Sample Response Model Mappings:
 2025-11-05 11:24:57,823 - __main__ - INFO -   /api/v2/announcements -> V2AnnouncementRead [id, title, subtitle (+6 more)]
 2025-11-05 11:24:57,824 - __main__ - INFO -   /api/v2/announcements/{announcement_id} -> V2AnnouncementRead [id, title, subtitle (+6 more)]
 2025-11-05 11:24:57,824 - __main__ - INFO -   /api/v2/announcements/{announcement_id} -> None []
+2025-11-06 21:49:57,120 - __main__ - INFO - Complete Frontend-Backend API Mapping Tool with Deep Table Analysis
+2025-11-06 21:49:57,122 - __main__ - INFO - ======================================================================
+2025-11-06 21:49:57,122 - __main__ - INFO - 
+1. Analyzing frontend with complete patterns...
+2025-11-06 21:49:57,123 - __main__ - INFO -    Found 0 frontend API calls
+2025-11-06 21:49:57,123 - __main__ - INFO - 
+2. Analyzing backend with deep table analysis...
+2025-11-06 21:49:57,124 - __main__ - INFO - Found 0 known tables
+2025-11-06 21:49:57,124 - __main__ - INFO - Collected 0 function definitions
+2025-11-06 21:49:57,124 - __main__ - INFO -    Found 0 backend routes
+2025-11-06 21:49:57,125 - __main__ - INFO -    Routes with tables: 0
+2025-11-06 21:49:57,125 - __main__ - INFO - 
+3. Creating mappings...
+2025-11-06 21:49:57,126 - __main__ - INFO - 
+4. Generating reports...
+2025-11-06 21:49:57,129 - __main__ - INFO -    Generated: mapping.csv.csv
+2025-11-06 21:49:57,130 - __main__ - INFO - 
+API MAPPING SUMMARY
+2025-11-06 21:49:57,130 - __main__ - INFO - ==================================================
+2025-11-06 21:49:57,130 - __main__ - INFO - Total Frontend Calls: 0
+2025-11-06 21:51:04,197 - __main__ - INFO - Complete Frontend-Backend API Mapping Tool with Deep Table Analysis
+2025-11-06 21:51:04,198 - __main__ - INFO - ======================================================================
+2025-11-06 21:51:04,199 - __main__ - INFO - 
+1. Analyzing frontend with complete patterns...
+2025-11-06 21:51:04,200 - __main__ - INFO -    Found 0 frontend API calls
+2025-11-06 21:51:04,201 - __main__ - INFO - 
+2. Analyzing backend with deep table analysis...
+2025-11-06 21:51:04,202 - __main__ - INFO - Found 0 known tables
+2025-11-06 21:51:04,204 - __main__ - INFO - Collected 0 function definitions
+2025-11-06 21:51:04,204 - __main__ - INFO -    Found 0 backend routes
+2025-11-06 21:51:04,205 - __main__ - INFO -    Routes with tables: 0
+2025-11-06 21:51:04,205 - __main__ - INFO - 
+3. Creating mappings...
+2025-11-06 21:51:04,206 - __main__ - INFO - 
+4. Generating reports...
+2025-11-06 21:51:04,210 - __main__ - INFO -    Generated: mapping.csv.csv
+2025-11-06 21:51:04,210 - __main__ - INFO - 
+API MAPPING SUMMARY
+2025-11-06 21:51:04,211 - __main__ - INFO - ==================================================
+2025-11-06 21:51:04,211 - __main__ - INFO - Total Frontend Calls: 0
