@@ -9,14 +9,14 @@ export const getVendorPortalDeliverablesList = async (
   bookingContract: number,
 ): Promise<TVendorPortalDeliverableList> => {
   const response = await client.get(
-    `${V2_URL}/manager/bookings/sdp/${bookingContract}`,
+    `${V2_URL}/manager/${bookingContract}`,
   );
   return VendorPortalDeliverableListSchema.parse(response.data);
 };
 
 export const updateVendorCAMAssignment = async (data: TCAMVendorAssignment) => {
   const response = await client.post(
-    `${V2_URL}/manager/bookings/sdp/${data.booking_contract}`,
+    `${V2_URL}/manager/${data.booking_contract}`,
     data,
   );
 
