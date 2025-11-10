@@ -50,6 +50,8 @@ MANIFEST
 .pytest_cache
 .ruff_cache
 .run
+*.csv
+*.log
 
 .claude/
 !.claude/agents
